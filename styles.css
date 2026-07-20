@@ -15,22 +15,21 @@ body {
   overflow: hidden;
 }
 
-/* --- HERO CON TÍTULO CURSIVO / LETTERING --- */
+/* HERO */
 .hero {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 1.5rem;
   text-align: center;
 }
 
 .main-title {
-  font-family: 'Caveat', cursive; /* Fuente fluida tipo script/handwritten */
+  font-family: 'Caveat', cursive;
   font-size: 7.5rem;
   font-weight: 700;
   color: #111D4A;
-  transform: rotate(-3deg); /* Le da un toque dinámico y desenfadado */
+  transform: rotate(-3deg);
   margin-bottom: -10px;
 }
 
@@ -41,12 +40,10 @@ body {
   opacity: 0.7;
 }
 
-/* --- CARPETA PRINCIPAL --- */
 .main-folder-wrapper {
   width: 280px;
   cursor: pointer;
   transition: transform 0.2s ease;
-  position: relative;
 }
 
 .main-folder-wrapper:hover {
@@ -75,48 +72,36 @@ body {
   box-shadow: 6px 6px 0px #111D4A;
 }
 
-.folder-label {
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: #FFF;
-}
+.folder-label { font-weight: 700; font-size: 1.2rem; color: #FFF; }
+.folder-sub { font-size: 0.8rem; color: #E0EFFF; margin-top: 5px; }
 
-.folder-sub {
-  font-size: 0.8rem;
-  color: #E0EFFF;
-  margin-top: 5px;
-}
-
-/* --- MODAL ESTILO MAC --- */
+/* MODALES / VENTANAS MAC */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: all;
+  z-index: 100;
 }
 
 .mac-window {
   width: 90%;
-  max-width: 800px;
+  max-width: 650px;
   background: #FFF;
   border: 2px solid #111D4A;
   border-radius: 10px;
   box-shadow: 8px 8px 0px #111D4A;
   overflow: hidden;
+}
+
+.wide-window {
+  max-width: 850px;
 }
 
 .mac-header {
@@ -128,20 +113,10 @@ body {
   position: relative;
 }
 
-.mac-buttons {
-  display: flex;
-  gap: 8px;
-}
-
-.btn-mac {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
+.mac-buttons { display: flex; gap: 8px; }
+.btn-mac { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.2); }
 .btn-mac.close { background: #FF5F56; cursor: pointer; }
-.btn-mac.minimize { background: #FFBD2E; }
+.btn-mac.minimize { background: #FFBD2E; cursor: pointer; }
 .btn-mac.maximize { background: #27C93F; }
 
 .mac-title {
@@ -152,61 +127,70 @@ body {
   font-weight: 700;
 }
 
-.mac-body {
+.back-btn {
+  margin-left: auto;
+  background: #FFF;
+  border: 1px solid #111D4A;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.back-btn:hover { background: #EBF3FA; }
+
+/* VENTANA RAÍZ (CARPETAS) */
+.mac-body-root {
+  padding: 30px;
+  text-align: center;
+}
+
+.explorer-instruction {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 25px;
+}
+
+.root-folder-grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.folder-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  width: 90px;
+  transition: background 0.2s ease;
+}
+
+.folder-icon-item:hover { background: #EBF3FA; }
+.big-folder-icon { font-size: 3rem; margin-bottom: 5px; }
+.folder-icon-item span { font-size: 0.85rem; font-weight: 700; }
+
+/* VENTANA INSPECTOR (ARCHIVOS + PANEL LATERAL) */
+.mac-body-inspector {
   display: flex;
   min-height: 400px;
 }
 
-.folder-grid {
-  width: 30%;
-  background: #F0F4F8;
+.files-area {
+  width: 60%;
+  padding: 20px;
   border-right: 2px solid #111D4A;
-  padding: 20px 10px;
+  background: #FAFAFA;
+}
+
+.file-grid {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.subfolder {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 0.9rem;
-  transition: background 0.2s ease;
-}
-
-.subfolder:hover {
-  background: #D9E6F2;
-}
-
-.content-display {
-  width: 70%;
-  padding: 25px;
-  overflow-y: auto;
-  max-height: 450px;
-}
-
-/* --- VISTA DE ARCHIVOS (EXPLORADOR) --- */
-.section-title {
-  font-size: 1.3rem;
-  color: #111D4A;
-}
-
-.section-subtitle {
-  font-size: 0.85rem;
-  opacity: 0.7;
-  margin-bottom: 15px;
-}
-
-.file-explorer-grid {
-  display: flex;
-  gap: 15px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  gap: 15px;
 }
 
 .file-item {
@@ -220,63 +204,41 @@ body {
   transition: background 0.2s ease;
 }
 
-.file-item:hover {
-  background: #EBF3FA;
-}
+.file-item:hover { background: #EBF3FA; }
+.file-thumbnail { font-size: 2.2rem; margin-bottom: 5px; }
+.file-item span { font-size: 0.75rem; font-weight: 700; text-align: center; }
 
-.file-thumbnail {
-  font-size: 2.2rem;
-  margin-bottom: 5px;
-}
-
-.file-name {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-align: center;
-  word-break: break-word;
-}
-
-/* CARDA DE PREVISUALIZACIÓN EXPANDIDA */
-.file-preview-card {
-  background: #F8F9FA;
-  border: 2px solid #111D4A;
-  border-radius: 8px;
-  padding: 15px;
-  margin-top: 10px;
-  box-shadow: 4px 4px 0px #111D4A;
-}
-
-.preview-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #DDD;
-  padding-bottom: 5px;
-}
-
-.close-preview {
-  background: none;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.preview-body {
+/* PANEL LATERAL / INSPECTOR */
+.inspector-sidebar {
+  width: 40%;
+  padding: 20px;
+  background: #FFF;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: center;
 }
 
-.preview-image {
+.inspector-placeholder {
+  text-align: center;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.inspector-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inspector-img {
   width: 100%;
-  max-height: 150px;
+  max-height: 160px;
   object-fit: cover;
   border-radius: 6px;
   border: 1px solid #111D4A;
 }
 
-.hidden {
-  display: none !important;
-}
+.inspector-title { font-size: 1.1rem; color: #111D4A; }
+.inspector-text { font-size: 0.85rem; line-height: 1.5; color: #333; }
+
+.hidden { display: none !important; }

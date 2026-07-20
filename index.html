@@ -3,21 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juan Filgueira — Portafolio</title>
+  <title>Juan Filgueira — Portafolio OS</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- Fuentes: Space Grotesk para estructura y Caveat para el título estilo cursive/handwritten -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- PANTALLA PRINCIPAL -->
+  <!-- PANTALLA PRINCIPAL DE ENTRADA -->
   <main class="hero">
     <h1 class="main-title">Portfolio</h1>
     
-    <!-- Carpeta Principal Gigante -->
-    <div class="main-folder-wrapper" id="openMainFolder">
+    <div class="main-folder-wrapper" onclick="openRootFolder()">
       <div class="folder-tab"></div>
       <div class="folder-body">
         <span class="folder-label">ABRIR PORTAFOLIO</span>
@@ -28,152 +26,214 @@
     <p class="author-tag">2026 EDITION — DESIGN & CODE</p>
   </main>
 
-  <!-- MODAL PRINCIPAL (Finder Mac) -->
-  <div class="modal-overlay" id="mainModal">
+  <!-- VENTANA PRINCIPAL: EXPLORADOR DE CARPETAS (RAÍZ) -->
+  <div class="modal-overlay hidden" id="rootModal">
     <div class="mac-window">
-      <!-- Barra superior de Mac -->
       <div class="mac-header">
         <div class="mac-buttons">
-          <span class="btn-mac close" id="closeMainModal"></span>
-          <span class="btn-mac minimize"></span>
+          <span class="btn-mac close" onclick="closeRootFolder()"></span>
+          <span class="btn-mac minimize" onclick="closeRootFolder()"></span>
           <span class="btn-mac maximize"></span>
         </div>
         <div class="mac-title">Finder — Mi Portafolio</div>
       </div>
 
-      <!-- Contenido del Finder -->
-      <div class="mac-body">
-        <!-- Sidebar de carpetas -->
-        <div class="folder-grid">
-          <div class="subfolder active" onclick="openSection('about')">
-            <div class="icon-folder">📁</div>
+      <div class="mac-body-root">
+        <p class="explorer-instruction">Selecciona una carpeta para abrir su contenido:</p>
+        
+        <div class="root-folder-grid">
+          <div class="folder-icon-item" onclick="openCategory('about')">
+            <div class="big-folder-icon">📁</div>
             <span>Sobre Mí</span>
           </div>
 
-          <div class="subfolder" onclick="openSection('experience')">
-            <div class="icon-folder">📁</div>
+          <div class="folder-icon-item" onclick="openCategory('experience')">
+            <div class="big-folder-icon">📁</div>
             <span>Experiencia</span>
           </div>
 
-          <div class="subfolder" onclick="openSection('projects')">
-            <div class="icon-folder">📁</div>
+          <div class="folder-icon-item" onclick="openCategory('projects')">
+            <div class="big-folder-icon">📁</div>
             <span>Proyectos</span>
           </div>
 
-          <div class="subfolder" onclick="openSection('skills')">
-            <div class="icon-folder">📁</div>
+          <div class="folder-icon-item" onclick="openCategory('skills')">
+            <div class="big-folder-icon">📁</div>
             <span>Skills</span>
           </div>
 
-          <div class="subfolder" onclick="openSection('contact')">
-            <div class="icon-folder">📁</div>
+          <div class="folder-icon-item" onclick="openCategory('contact')">
+            <div class="big-folder-icon">📁</div>
             <span>Contacto</span>
           </div>
-        </div>
-
-        <!-- Vista de Contenido -->
-        <div class="content-display" id="contentDisplay">
-
-          <!-- SECCIÓN: SOBRE MÍ (ESTILO EXPLORADOR DE ICONOS) -->
-          <div id="sec-about" class="section-content">
-            <h2 class="section-title">Sobre Mí / Archivos</h2>
-            <p class="section-subtitle">Haz clic en una imagen o documento para previsualizarlo:</p>
-
-            <div class="file-explorer-grid">
-              <!-- Icono 1 -->
-              <div class="file-item" onclick="openFilePreview('Foto Perfil', 'https://via.placeholder.com/300x200', '¡Hola! Soy creador/a visual y desarrollador/a apasionado por construir experiencias limpias y originales.')">
-                <div class="file-thumbnail">🖼️</div>
-                <span class="file-name">Perfil_2026.png</span>
-              </div>
-
-              <!-- Icono 2 -->
-              <div class="file-item" onclick="openFilePreview('Mi Filosofía', 'https://via.placeholder.com/300x200', 'Me enfoco en unir el diseño atractivo con un código eficiente y bien estructurado.')">
-                <div class="file-thumbnail">📄</div>
-                <span class="file-name">Bio_Resumen.txt</span>
-              </div>
-
-              <!-- Icono 3 -->
-              <div class="file-item" onclick="openFilePreview('Setup & Tools', 'https://via.placeholder.com/300x200', 'Trabajando con las mejores herramientas de maquetación, desarrollo web y edición.')">
-                <div class="file-thumbnail">🖼️</div>
-                <span class="file-name">Mi_Setup.jpg</span>
-              </div>
-            </div>
-
-            <!-- Vista Previa Expandida (Preview) -->
-            <div class="file-preview-card hidden" id="filePreview">
-              <div class="preview-header">
-                <strong id="previewTitle">Nombre del Archivo</strong>
-                <button class="close-preview" onclick="closeFilePreview()">✕</button>
-              </div>
-              <div class="preview-body">
-                <img id="previewImg" src="" alt="Vista Previa" class="preview-image">
-                <p id="previewText">Descripción detallada del archivo...</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- RESTO DE SECCIONES -->
-          <div id="sec-experience" class="section-content hidden">
-            <h2>Experiencia</h2>
-            <p>• Proyecto A — Creador Principal<br>• Proyecto B — Frontend Developer</p>
-          </div>
-
-          <div id="sec-projects" class="section-content hidden">
-            <h2>Proyectos</h2>
-            <p>🚀 Mi primer portafolio web<br>🎨 Diseños y conceptos UI/UX</p>
-          </div>
-
-          <div id="sec-skills" class="section-content hidden">
-            <h2>Habilidades</h2>
-            <p>HTML5, CSS3, JavaScript, Figma, Git & GitHub</p>
-          </div>
-
-          <div id="sec-contact" class="section-content hidden">
-            <h2>Contacto</h2>
-            <p>📩 email@ejemplo.com<br>🔗 github.com/tu-usuario</p>
-          </div>
-
         </div>
       </div>
     </div>
   </div>
 
+  <!-- VENTANA SECUNDARIA: INSPECTOR DE ARCHIVOS Y PANEL LATERAL -->
+  <div class="modal-overlay hidden" id="categoryModal">
+    <div class="mac-window wide-window">
+      <div class="mac-header">
+        <div class="mac-buttons">
+          <span class="btn-mac close" onclick="closeCategoryModal()"></span>
+          <span class="btn-mac minimize" onclick="closeCategoryModal()"></span>
+          <span class="btn-mac maximize"></span>
+        </div>
+        <div class="mac-title" id="catModalTitle">Finder — Categoría</div>
+        <button class="back-btn" onclick="backToRoot()">← Volver a Carpetas</button>
+      </div>
+
+      <div class="mac-body-inspector">
+        <!-- ÁREA IZQUIERDA: ARCHIVOS / ICONOS DE LA CARPETA -->
+        <div class="files-area">
+          
+          <!-- Archivos de Sobre Mí -->
+          <div id="cat-about" class="category-content hidden">
+            <div class="file-grid">
+              <div class="file-item" onclick="showInspector('Perfil 2026', 'https://via.placeholder.com/400x300', '¡Hola! Soy creador visual y desarrollador enfocado en soluciones limpias y atractivas.')">
+                <div class="file-thumbnail">🖼️</div>
+                <span>Perfil_2026.png</span>
+              </div>
+              <div class="file-item" onclick="showInspector('Mi Filosofía', 'https://via.placeholder.com/400x300', 'Me gusta fusionar estética con programación estructurada.')">
+                <div class="file-thumbnail">📄</div>
+                <span>Filosofia.txt</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Archivos de Experiencia -->
+          <div id="cat-experience" class="category-content hidden">
+            <div class="file-grid">
+              <div class="file-item" onclick="showInspector('Proyecto Edición', 'https://via.placeholder.com/400x300', 'Dirección creativa y post-producción audiovisual para marcas.')">
+                <div class="file-thumbnail">🎬</div>
+                <span>PostPro_Role.mov</span>
+              </div>
+              <div class="file-item" onclick="showInspector('Freelance Dev', 'https://via.placeholder.com/400x300', 'Desarrollo de landing pages y soluciones web estáticas y dinámicas.')">
+                <div class="file-thumbnail">💻</div>
+                <span>Dev_Experience.pdf</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Archivos de Proyectos -->
+          <div id="cat-projects" class="category-content hidden">
+            <div class="file-grid">
+              <div class="file-item" onclick="showInspector('Portafolio OS', 'https://via.placeholder.com/400x300', 'Este mismo sitio hecho con HTML, CSS3 y JS emulando macOS.')">
+                <div class="file-thumbnail">🚀</div>
+                <span>Mac_Portfolio.app</span>
+              </div>
+              <div class="file-item" onclick="showInspector('UI/UX Concept', 'https://via.placeholder.com/400x300', 'Prototipos y diseño de interfaces interactivas.')">
+                <div class="file-thumbnail">🎨</div>
+                <span>Ui_Design.fig</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Archivos de Skills -->
+          <div id="cat-skills" class="category-content hidden">
+            <div class="file-grid">
+              <div class="file-item" onclick="showInspector('Tech Stack', 'https://via.placeholder.com/400x300', 'HTML5, CSS3, JavaScript, Python, Git & Figma.')">
+                <div class="file-thumbnail">⚡</div>
+                <span>Stack_Tecnico.json</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Archivos de Contacto -->
+          <div id="cat-contact" class="category-content hidden">
+            <div class="file-grid">
+              <div class="file-item" onclick="showInspector('Redes & Mail', 'https://via.placeholder.com/400x300', 'Escríbeme para colaborar en nuevos proyectos: miemail@ejemplo.com')">
+                <div class="file-thumbnail">📩</div>
+                <span>Contacto_Directo.vcf</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ÁREA DERECHA: INSPECTOR / DETALLES LATERALES -->
+        <div class="inspector-sidebar" id="inspectorSidebar">
+          <div class="inspector-placeholder" id="inspectorPlaceholder">
+            <p>👈 Selecciona un archivo para inspeccionar sus detalles</p>
+          </div>
+          <div class="inspector-details hidden" id="inspectorDetails">
+            <img id="inspectorImg" src="" alt="Preview" class="inspector-img">
+            <h3 id="inspectorTitle" class="inspector-title">Título del Archivo</h3>
+            <p id="inspectorText" class="inspector-text">Información y descripción detallada...</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <script>
-    const mainFolder = document.getElementById('openMainFolder');
-    const mainModal = document.getElementById('mainModal');
-    const closeBtn = document.getElementById('closeMainModal');
+    const rootModal = document.getElementById('rootModal');
+    const categoryModal = document.getElementById('categoryModal');
 
-    // Abrir Modal Principal
-    mainFolder.addEventListener('click', () => {
-      mainModal.classList.add('active');
-    });
-
-    // Cerrar Modal Principal
-    closeBtn.addEventListener('click', () => {
-      mainModal.classList.remove('active');
-    });
-
-    // Cambiar de sección
-    function openSection(secId) {
-      document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
-      const activeSec = document.getElementById('sec-' + secId);
-      if (activeSec) {
-        activeSec.classList.remove('hidden');
-      }
+    // Abrir ventana inicial de carpetas
+    function openRootFolder() {
+      rootModal.classList.remove('hidden');
     }
 
-    // Funciones para Expandir/Previsualizar Archivos en "Sobre Mí"
-    function openFilePreview(title, imgUrl, text) {
-      const previewCard = document.getElementById('filePreview');
-      document.getElementById('previewTitle').innerText = title;
-      document.getElementById('previewImg').src = imgUrl;
-      document.getElementById('previewText').innerText = text;
+    function closeRootFolder() {
+      rootModal.classList.add('hidden');
+    }
+
+    // Abrir una categoría/carpeta específica
+    function openCategory(catId) {
+      // Ocultar modal de carpetas
+      rootModal.classList.add('hidden');
       
-      previewCard.classList.remove('hidden');
+      // Configurar título del modal
+      const titles = {
+        about: 'Sobre Mí',
+        experience: 'Experiencia',
+        projects: 'Proyectos',
+        skills: 'Skills',
+        contact: 'Contacto'
+      };
+      document.getElementById('catModalTitle').innerText = 'Finder — ' + titles[catId];
+
+      // Ocultar contenidos anteriores
+      document.querySelectorAll('.category-content').forEach(el => el.classList.add('hidden'));
+      
+      // Resetear Inspector
+      resetInspector();
+
+      // Mostrar el contenido de la categoría seleccionada
+      const activeCat = document.getElementById('cat-' + catId);
+      if(activeCat) activeCat.classList.remove('hidden');
+
+      // Mostrar Modal
+      categoryModal.classList.remove('hidden');
     }
 
-    function closeFilePreview() {
-      document.getElementById('filePreview').classList.add('hidden');
+    function closeCategoryModal() {
+      categoryModal.classList.add('hidden');
+    }
+
+    function backToRoot() {
+      categoryModal.classList.add('hidden');
+      rootModal.classList.remove('hidden');
+    }
+
+    // Mostrar detalles en el panel lateral
+    function showInspector(title, imgUrl, text) {
+      document.getElementById('inspectorPlaceholder').classList.add('hidden');
+      
+      const details = document.getElementById('inspectorDetails');
+      document.getElementById('inspectorTitle').innerText = title;
+      document.getElementById('inspectorImg').src = imgUrl;
+      document.getElementById('inspectorText').innerText = text;
+      
+      details.classList.remove('hidden');
+    }
+
+    function resetInspector() {
+      document.getElementById('inspectorPlaceholder').classList.remove('hidden');
+      document.getElementById('inspectorDetails').classList.add('hidden');
     }
   </script>
 </body>
