@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Portafolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Fuente moderna similar a la referencia -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- PANTALLA PRINCIPAL -->
+  <main class="hero">
+    <h1 class="main-title">PORTFOLIO</h1>
+    
+    <!-- Carpeta Principal Gigante -->
+    <div class="main-folder-wrapper" id="openMainFolder">
+      <div class="folder-tab"></div>
+      <div class="folder-body">
+        <span class="folder-label">ABRIR PORTAFOLIO</span>
+        <span class="folder-sub">Haz clic para explorar</span>
+      </div>
+    </div>
+
+    <p class="author-tag">2026 EDITION — DESIGN & CODE</p>
+  </main>
+
+  <!-- MODAL PRINCIPAL (Se abre al hacer clic en la carpeta gigante) -->
+  <div class="modal-overlay" id="mainModal">
+    <div class="mac-window">
+      <!-- Barra superior de Mac -->
+      <div class="mac-header">
+        <div class="mac-buttons">
+          <span class="btn-mac close" id="closeMainModal"></span>
+          <span class="btn-mac minimize"></span>
+          <span class="btn-mac maximize"></span>
+        </div>
+        <div class="mac-title">Finder — Mi Portafolio</div>
+      </div>
+
+      <!-- Contenido del Finder (Subcarpetas) -->
+      <div class="mac-body">
+        <div class="folder-grid">
+          
+          <div class="subfolder" onclick="openSection('about')">
+            <div class="icon-folder">📁</div>
+            <span>Sobre Mí</span>
+          </div>
+
+          <div class="subfolder" onclick="openSection('experience')">
+            <div class="icon-folder">📁</div>
+            <span>Experiencia</span>
+          </div>
+
+          <div class="subfolder" onclick="openSection('projects')">
+            <div class="icon-folder">📁</div>
+            <span>Proyectos</span>
+          </div>
+
+          <div class="subfolder" onclick="openSection('skills')">
+            <div class="icon-folder">📁</div>
+            <span>Skills</span>
+          </div>
+
+          <div class="subfolder" onclick="openSection('contact')">
+            <div class="icon-folder">📁</div>
+            <span>Contacto</span>
+          </div>
+
+        </div>
+
+        <!-- Área donde se cargará la información de la sección seleccionada -->
+        <div class="content-display" id="contentDisplay">
+          <p class="placeholder-text">Selecciona una carpeta para ver el contenido ✨</p>
+
+          <div id="sec-about" class="section-content hidden">
+            <h2>Sobre Mí</h2>
+            <p>¡Hola! Soy creador/a de contenido y desarrollador/a. Me encanta crear experiencias digitales limpias y funcionales.</p>
+          </div>
+
+          <div id="sec-experience" class="section-content hidden">
+            <h2>Experiencia</h2>
+            <p>• Proyecto A — Creador Principal<br>• Proyecto B — Frontend Developer</p>
+          </div>
+
+          <div id="sec-projects" class="section-content hidden">
+            <h2>Proyectos</h2>
+            <p>🚀 Mi primer portafolio web<br>🎨 Diseños y conceptos UI/UX</p>
+          </div>
+
+          <div id="sec-skills" class="section-content hidden">
+            <h2>Habilidades</h2>
+            <p>HTML5, CSS3, JavaScript, Figma, Git & GitHub</p>
+          </div>
+
+          <div id="sec-contact" class="section-content hidden">
+            <h2>Contacto</h2>
+            <p>📩 email@ejemplo.com<br>🔗 github.com/tu-usuario</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const mainFolder = document.getElementById('openMainFolder');
+    const mainModal = document.getElementById('mainModal');
+    const closeBtn = document.getElementById('closeMainModal');
+
+    // Abrir Modal Principal
+    mainFolder.addEventListener('click', () => {
+      mainModal.classList.add('active');
+    });
+
+    // Cerrar Modal Principal
+    closeBtn.addEventListener('click', () => {
+      mainModal.classList.remove('active');
+    });
+
+    // Cambiar contenido según la subcarpeta
+    function openSection(secId) {
+      // Ocultar placeholder y todas las secciones
+      document.querySelector('.placeholder-text').style.display = 'none';
+      document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+
+      // Mostrar la seleccionada
+      const activeSec = document.getElementById('sec-' + secId);
+      if (activeSec) {
+        activeSec.classList.remove('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
