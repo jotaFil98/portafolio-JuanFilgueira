@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Portafolio</title>
+  <title>Juan Filgueira — Portafolio</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- Fuente moderna similar a la referencia -->
+  <!-- Fuentes: Space Grotesk para estructura y Caveat para el título estilo cursive/handwritten -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <!-- PANTALLA PRINCIPAL -->
   <main class="hero">
-    <h1 class="main-title">PORTFOLIO</h1>
+    <h1 class="main-title">Portfolio</h1>
     
     <!-- Carpeta Principal Gigante -->
     <div class="main-folder-wrapper" id="openMainFolder">
@@ -28,7 +28,7 @@
     <p class="author-tag">2026 EDITION — DESIGN & CODE</p>
   </main>
 
-  <!-- MODAL PRINCIPAL (Se abre al hacer clic en la carpeta gigante) -->
+  <!-- MODAL PRINCIPAL (Finder Mac) -->
   <div class="modal-overlay" id="mainModal">
     <div class="mac-window">
       <!-- Barra superior de Mac -->
@@ -41,11 +41,11 @@
         <div class="mac-title">Finder — Mi Portafolio</div>
       </div>
 
-      <!-- Contenido del Finder (Subcarpetas) -->
+      <!-- Contenido del Finder -->
       <div class="mac-body">
+        <!-- Sidebar de carpetas -->
         <div class="folder-grid">
-          
-          <div class="subfolder" onclick="openSection('about')">
+          <div class="subfolder active" onclick="openSection('about')">
             <div class="icon-folder">📁</div>
             <span>Sobre Mí</span>
           </div>
@@ -69,18 +69,50 @@
             <div class="icon-folder">📁</div>
             <span>Contacto</span>
           </div>
-
         </div>
 
-        <!-- Área donde se cargará la información de la sección seleccionada -->
+        <!-- Vista de Contenido -->
         <div class="content-display" id="contentDisplay">
-          <p class="placeholder-text">Selecciona una carpeta para ver el contenido ✨</p>
 
-          <div id="sec-about" class="section-content hidden">
-            <h2>Sobre Mí</h2>
-            <p>¡Hola! Soy creador/a de contenido y desarrollador/a. Me encanta crear experiencias digitales limpias y funcionales.</p>
+          <!-- SECCIÓN: SOBRE MÍ (ESTILO EXPLORADOR DE ICONOS) -->
+          <div id="sec-about" class="section-content">
+            <h2 class="section-title">Sobre Mí / Archivos</h2>
+            <p class="section-subtitle">Haz clic en una imagen o documento para previsualizarlo:</p>
+
+            <div class="file-explorer-grid">
+              <!-- Icono 1 -->
+              <div class="file-item" onclick="openFilePreview('Foto Perfil', 'https://via.placeholder.com/300x200', '¡Hola! Soy creador/a visual y desarrollador/a apasionado por construir experiencias limpias y originales.')">
+                <div class="file-thumbnail">🖼️</div>
+                <span class="file-name">Perfil_2026.png</span>
+              </div>
+
+              <!-- Icono 2 -->
+              <div class="file-item" onclick="openFilePreview('Mi Filosofía', 'https://via.placeholder.com/300x200', 'Me enfoco en unir el diseño atractivo con un código eficiente y bien estructurado.')">
+                <div class="file-thumbnail">📄</div>
+                <span class="file-name">Bio_Resumen.txt</span>
+              </div>
+
+              <!-- Icono 3 -->
+              <div class="file-item" onclick="openFilePreview('Setup & Tools', 'https://via.placeholder.com/300x200', 'Trabajando con las mejores herramientas de maquetación, desarrollo web y edición.')">
+                <div class="file-thumbnail">🖼️</div>
+                <span class="file-name">Mi_Setup.jpg</span>
+              </div>
+            </div>
+
+            <!-- Vista Previa Expandida (Preview) -->
+            <div class="file-preview-card hidden" id="filePreview">
+              <div class="preview-header">
+                <strong id="previewTitle">Nombre del Archivo</strong>
+                <button class="close-preview" onclick="closeFilePreview()">✕</button>
+              </div>
+              <div class="preview-body">
+                <img id="previewImg" src="" alt="Vista Previa" class="preview-image">
+                <p id="previewText">Descripción detallada del archivo...</p>
+              </div>
+            </div>
           </div>
 
+          <!-- RESTO DE SECCIONES -->
           <div id="sec-experience" class="section-content hidden">
             <h2>Experiencia</h2>
             <p>• Proyecto A — Creador Principal<br>• Proyecto B — Frontend Developer</p>
@@ -100,8 +132,8 @@
             <h2>Contacto</h2>
             <p>📩 email@ejemplo.com<br>🔗 github.com/tu-usuario</p>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
   </div>
@@ -121,17 +153,27 @@
       mainModal.classList.remove('active');
     });
 
-    // Cambiar contenido según la subcarpeta
+    // Cambiar de sección
     function openSection(secId) {
-      // Ocultar placeholder y todas las secciones
-      document.querySelector('.placeholder-text').style.display = 'none';
       document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
-
-      // Mostrar la seleccionada
       const activeSec = document.getElementById('sec-' + secId);
       if (activeSec) {
         activeSec.classList.remove('hidden');
       }
+    }
+
+    // Funciones para Expandir/Previsualizar Archivos en "Sobre Mí"
+    function openFilePreview(title, imgUrl, text) {
+      const previewCard = document.getElementById('filePreview');
+      document.getElementById('previewTitle').innerText = title;
+      document.getElementById('previewImg').src = imgUrl;
+      document.getElementById('previewText').innerText = text;
+      
+      previewCard.classList.remove('hidden');
+    }
+
+    function closeFilePreview() {
+      document.getElementById('filePreview').classList.add('hidden');
     }
   </script>
 </body>

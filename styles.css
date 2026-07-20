@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #F6F3E7; /* El crema de la referencia */
+  background-color: #F6F3E7;
   color: #111D4A;
   min-height: 100vh;
   display: flex;
@@ -15,46 +15,48 @@ body {
   overflow: hidden;
 }
 
-/* --- PANTALLA INICIAL --- */
+/* --- HERO CON TÍTULO CURSIVO / LETTERING --- */
 .hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
   text-align: center;
 }
 
 .main-title {
-  font-size: 5rem;
+  font-family: 'Caveat', cursive; /* Fuente fluida tipo script/handwritten */
+  font-size: 7.5rem;
   font-weight: 700;
-  letter-spacing: -2px;
   color: #111D4A;
+  transform: rotate(-3deg); /* Le da un toque dinámico y desenfadado */
+  margin-bottom: -10px;
 }
 
 .author-tag {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   opacity: 0.7;
 }
 
-/* --- CARPETA PRINCIPAL GIGANTE --- */
+/* --- CARPETA PRINCIPAL --- */
 .main-folder-wrapper {
   width: 280px;
   cursor: pointer;
-  transition: transform 0.2s ease, filter 0.2s ease;
+  transition: transform 0.2s ease;
   position: relative;
 }
 
 .main-folder-wrapper:hover {
-  transform: translateY(-5px) scale(1.02);
+  transform: translateY(-6px) scale(1.02);
 }
 
 .folder-tab {
   width: 90px;
   height: 25px;
-  background-color: #4A90E2; /* Azul cute */
+  background-color: #4A90E2;
   border-radius: 8px 8px 0 0;
   border: 2px solid #111D4A;
   border-bottom: none;
@@ -109,7 +111,7 @@ body {
 
 .mac-window {
   width: 90%;
-  max-width: 750px;
+  max-width: 800px;
   background: #FFF;
   border: 2px solid #111D4A;
   border-radius: 10px;
@@ -136,7 +138,6 @@ body {
   height: 12px;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  display: inline-block;
 }
 
 .btn-mac.close { background: #FF5F56; cursor: pointer; }
@@ -153,29 +154,28 @@ body {
 
 .mac-body {
   display: flex;
-  min-height: 350px;
+  min-height: 400px;
 }
 
-/* Grilla de subcarpetas (Lado Izquierdo) */
 .folder-grid {
-  width: 35%;
+  width: 30%;
   background: #F0F4F8;
   border-right: 2px solid #111D4A;
-  padding: 20px;
+  padding: 20px 10px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 .subfolder {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 12px;
+  padding: 10px 12px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: background 0.2s ease;
 }
 
@@ -183,36 +183,100 @@ body {
   background: #D9E6F2;
 }
 
-.icon-folder {
-  font-size: 1.2rem;
-}
-
-/* Panel de Contenido (Lado Derecho) */
 .content-display {
-  width: 65%;
+  width: 70%;
   padding: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  overflow-y: auto;
+  max-height: 450px;
 }
 
-.placeholder-text {
-  color: #888;
-  font-size: 0.9rem;
-  text-align: center;
-}
-
-.section-content h2 {
-  font-size: 1.5rem;
-  margin-bottom: 12px;
+/* --- VISTA DE ARCHIVOS (EXPLORADOR) --- */
+.section-title {
+  font-size: 1.3rem;
   color: #111D4A;
 }
 
-.section-content p {
-  line-height: 1.6;
-  font-size: 0.95rem;
+.section-subtitle {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-bottom: 15px;
+}
+
+.file-explorer-grid {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.file-item {
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.file-item:hover {
+  background: #EBF3FA;
+}
+
+.file-thumbnail {
+  font-size: 2.2rem;
+  margin-bottom: 5px;
+}
+
+.file-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  word-break: break-word;
+}
+
+/* CARDA DE PREVISUALIZACIÓN EXPANDIDA */
+.file-preview-card {
+  background: #F8F9FA;
+  border: 2px solid #111D4A;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 10px;
+  box-shadow: 4px 4px 0px #111D4A;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #DDD;
+  padding-bottom: 5px;
+}
+
+.close-preview {
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.preview-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.preview-image {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #111D4A;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
