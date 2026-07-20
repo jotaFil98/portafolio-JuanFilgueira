@@ -81,7 +81,7 @@
           <span class="btn-mac maximize"></span>
         </div>
         <div class="mac-title" id="catModalTitle">Finder — Categoría</div>
-        <button class="back-btn" onclick="backToRoot()">← Volver a Carpetas</button>
+        <button class="back-btn" id="backBtn" onclick="backToRoot()">← Volver a Carpetas</button>
       </div>
 
       <div class="mac-body-inspector">
@@ -91,11 +91,11 @@
           <!-- Archivos de Sobre Mí -->
           <div id="cat-about" class="category-content hidden">
             <div class="file-grid">
-              <div class="file-item" onclick="showInspector('Perfil 2026', 'https://via.placeholder.com/400x300', '¡Hola! Soy creador visual y desarrollador enfocado en soluciones limpias y atractivas.')">
+              <div class="file-item" onclick="showInspector('Perfil 2026', 'img/tu_foto.jpg', '¡Hola! Soy creador visual y desarrollador enfocado en soluciones limpias y atractivas.')">
                 <div class="file-thumbnail">🖼️</div>
                 <span>Perfil_2026.png</span>
               </div>
-              <div class="file-item" onclick="showInspector('Mi Filosofía', 'https://via.placeholder.com/400x300', 'Me gusta fusionar estética con programación estructurada.')">
+              <div class="file-item" onclick="showInspector('Mi Filosofía', '', 'Me gusta fusionar estética con programación estructurada para crear experiencias interactivas.')">
                 <div class="file-thumbnail">📄</div>
                 <span>Filosofia.txt</span>
               </div>
@@ -105,27 +105,76 @@
           <!-- Archivos de Experiencia -->
           <div id="cat-experience" class="category-content hidden">
             <div class="file-grid">
-              <div class="file-item" onclick="showInspector('Proyecto Edición', 'https://via.placeholder.com/400x300', 'Dirección creativa y post-producción audiovisual para marcas.')">
+              <div class="file-item" onclick="showInspector('Edición & Motion', 'img/edicion.jpg', 'Dirección creativa, post-producción audiovisual y animación para medios.')">
                 <div class="file-thumbnail">🎬</div>
-                <span>PostPro_Role.mov</span>
+                <span>Edicion_Motion.mov</span>
               </div>
-              <div class="file-item" onclick="showInspector('Freelance Dev', 'https://via.placeholder.com/400x300', 'Desarrollo de landing pages y soluciones web estáticas y dinámicas.')">
+              <div class="file-item" onclick="showInspector('Desarrollo Web & IT', '', 'Desarrollo de sitios web, gestión de bases de datos y soporte en soluciones tecnológicas.')">
                 <div class="file-thumbnail">💻</div>
-                <span>Dev_Experience.pdf</span>
+                <span>Dev_Experience.txt</span>
               </div>
             </div>
           </div>
 
-          <!-- Archivos de Proyectos -->
+          <!-- CARPETA PRINCIPAL: PROYECTOS -->
           <div id="cat-projects" class="category-content hidden">
             <div class="file-grid">
-              <div class="file-item" onclick="showInspector('Portafolio OS', 'https://via.placeholder.com/400x300', 'Este mismo sitio hecho con HTML, CSS3 y JS emulando macOS.')">
-                <div class="file-thumbnail">🚀</div>
-                <span>Mac_Portfolio.app</span>
+              <!-- Subcarpeta 1 -->
+              <div class="file-item" onclick="openSubProject('appclubmanager')">
+                <div class="file-thumbnail">📁</div>
+                <span>AppClubmanager</span>
               </div>
-              <div class="file-item" onclick="showInspector('UI/UX Concept', 'https://via.placeholder.com/400x300', 'Prototipos y diseño de interfaces interactivas.')">
-                <div class="file-thumbnail">🎨</div>
-                <span>Ui_Design.fig</span>
+
+              <!-- Subcarpeta 2 -->
+              <div class="file-item" onclick="openSubProject('paginadesalud')">
+                <div class="file-thumbnail">📁</div>
+                <span>Paginadesalud</span>
+              </div>
+
+              <!-- Archivo TXT 1 -->
+              <div class="file-item" onclick="showInspector('Proyecto MDATV', '', 'Escribe aquí todos los detalles sobre el proyecto MDATV, tu rol, tecnologías usadas y aprendizajes.')">
+                <div class="file-thumbnail">📄</div>
+                <span>MDATV.txt</span>
+              </div>
+
+              <!-- Archivo TXT 2 -->
+              <div class="file-item" onclick="showInspector('Proyecto RMP', '', 'Información detallada sobre el proyecto RMP. Describe el enfoque, objetivos y resultados aquí.')">
+                <div class="file-thumbnail">📄</div>
+                <span>RMP.txt</span>
+              </div>
+
+              <!-- Archivo TXT 3 -->
+              <div class="file-item" onclick="showInspector('Proyecto Eadic', '', 'Detalles sobre la iniciativa o desarrollo Eadic. Explicación completa del concepto.')">
+                <div class="file-thumbnail">📄</div>
+                <span>Eadic.txt</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUBCARPETA: AppClubmanager -->
+          <div id="subcat-appclubmanager" class="category-content hidden">
+            <div class="file-grid">
+              <div class="file-item" onclick="showInspector('App Club Manager', 'img/clubmanager_preview.jpg', 'Aplicación para la gestión de clubes y administración de datos.')">
+                <div class="file-thumbnail">🖼️</div>
+                <span>Overview.png</span>
+              </div>
+              <div class="file-item" onclick="showInspector('Detalles AppClubmanager', '', 'Documentación de características principales, flujo de usuario y funcionalidades desarrolladas.')">
+                <div class="file-thumbnail">📄</div>
+                <span>Detalles.txt</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUBCARPETA: Paginadesalud -->
+          <div id="subcat-paginadesalud" class="category-content hidden">
+            <div class="file-grid">
+              <div class="file-item" onclick="showInspector('Página de Salud', 'img/salud_preview.jpg', 'Plataforma web diseñada para servicios de salud, landing responsive y catálogo de servicios.')">
+                <div class="file-thumbnail">🖼️</div>
+                <span>Preview.png</span>
+              </div>
+              <div class="file-item" onclick="showInspector('Estructura & Diseño', '', 'Detalles sobre la maquetación web, componentes UI y optimización del sitio de salud.')">
+                <div class="file-thumbnail">📄</div>
+                <span>Info_Salud.txt</span>
               </div>
             </div>
           </div>
@@ -133,9 +182,9 @@
           <!-- Archivos de Skills -->
           <div id="cat-skills" class="category-content hidden">
             <div class="file-grid">
-              <div class="file-item" onclick="showInspector('Tech Stack', 'https://via.placeholder.com/400x300', 'HTML5, CSS3, JavaScript, Python, Git & Figma.')">
+              <div class="file-item" onclick="showInspector('Tech Stack', '', 'HTML5, CSS3, JavaScript, Python, Flet, SQL, Git, GitHub, Figma, Adobe Suite, DaVinci Resolve.')">
                 <div class="file-thumbnail">⚡</div>
-                <span>Stack_Tecnico.json</span>
+                <span>Stack_Tecnico.txt</span>
               </div>
             </div>
           </div>
@@ -143,9 +192,9 @@
           <!-- Archivos de Contacto -->
           <div id="cat-contact" class="category-content hidden">
             <div class="file-grid">
-              <div class="file-item" onclick="showInspector('Redes & Mail', 'https://via.placeholder.com/400x300', 'Escríbeme para colaborar en nuevos proyectos: miemail@ejemplo.com')">
+              <div class="file-item" onclick="showInspector('Contacto & Redes', '', '¡Escríbeme para colaborar en proyectos web o edición visual!')">
                 <div class="file-thumbnail">📩</div>
-                <span>Contacto_Directo.vcf</span>
+                <span>Contacto_Directo.txt</span>
               </div>
             </div>
           </div>
@@ -158,7 +207,7 @@
             <p>👈 Selecciona un archivo para inspeccionar sus detalles</p>
           </div>
           <div class="inspector-details hidden" id="inspectorDetails">
-            <img id="inspectorImg" src="" alt="Preview" class="inspector-img">
+            <img id="inspectorImg" src="" alt="Preview" class="inspector-img hidden">
             <h3 id="inspectorTitle" class="inspector-title">Título del Archivo</h3>
             <p id="inspectorText" class="inspector-text">Información y descripción detallada...</p>
           </div>
@@ -171,22 +220,22 @@
   <script>
     const rootModal = document.getElementById('rootModal');
     const categoryModal = document.getElementById('categoryModal');
+    const backBtn = document.getElementById('backBtn');
 
-    // Abrir ventana inicial de carpetas
+    let currentLevel = 'root'; // 'root', 'category', 'subcategory'
+
     function openRootFolder() {
       rootModal.classList.remove('hidden');
+      currentLevel = 'root';
     }
 
     function closeRootFolder() {
       rootModal.classList.add('hidden');
     }
 
-    // Abrir una categoría/carpeta específica
     function openCategory(catId) {
-      // Ocultar modal de carpetas
       rootModal.classList.add('hidden');
       
-      // Configurar título del modal
       const titles = {
         about: 'Sobre Mí',
         experience: 'Experiencia',
@@ -196,18 +245,36 @@
       };
       document.getElementById('catModalTitle').innerText = 'Finder — ' + titles[catId];
 
-      // Ocultar contenidos anteriores
       document.querySelectorAll('.category-content').forEach(el => el.classList.add('hidden'));
-      
-      // Resetear Inspector
       resetInspector();
 
-      // Mostrar el contenido de la categoría seleccionada
       const activeCat = document.getElementById('cat-' + catId);
       if(activeCat) activeCat.classList.remove('hidden');
 
-      // Mostrar Modal
+      backBtn.onclick = backToRoot;
+      backBtn.innerText = "← Volver a Carpetas";
+
       categoryModal.classList.remove('hidden');
+      currentLevel = 'category';
+    }
+
+    function openSubProject(subId) {
+      document.querySelectorAll('.category-content').forEach(el => el.classList.add('hidden'));
+      resetInspector();
+
+      const subTitles = {
+        appclubmanager: 'Proyectos / AppClubmanager',
+        paginadesalud: 'Proyectos / Paginadesalud'
+      };
+
+      document.getElementById('catModalTitle').innerText = 'Finder — ' + subTitles[subId];
+
+      const activeSub = document.getElementById('subcat-' + subId);
+      if(activeSub) activeSub.classList.remove('hidden');
+
+      backBtn.onclick = () => openCategory('projects');
+      backBtn.innerText = "← Volver a Proyectos";
+      currentLevel = 'subcategory';
     }
 
     function closeCategoryModal() {
@@ -217,16 +284,26 @@
     function backToRoot() {
       categoryModal.classList.add('hidden');
       rootModal.classList.remove('hidden');
+      currentLevel = 'root';
     }
 
-    // Mostrar detalles en el panel lateral
+    // Muestra detalles en el panel lateral (oculta la imagen si la ruta está vacía)
     function showInspector(title, imgUrl, text) {
       document.getElementById('inspectorPlaceholder').classList.add('hidden');
       
       const details = document.getElementById('inspectorDetails');
+      const imgElement = document.getElementById('inspectorImg');
+
       document.getElementById('inspectorTitle').innerText = title;
-      document.getElementById('inspectorImg').src = imgUrl;
       document.getElementById('inspectorText').innerText = text;
+      
+      if (imgUrl && imgUrl.trim() !== '') {
+        imgElement.src = imgUrl;
+        imgElement.classList.remove('hidden');
+      } else {
+        imgElement.src = '';
+        imgElement.classList.add('hidden');
+      }
       
       details.classList.remove('hidden');
     }
