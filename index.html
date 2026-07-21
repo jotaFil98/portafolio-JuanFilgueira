@@ -257,12 +257,19 @@
     </div>
   </div>
 
+  <!-- MODAL DE IMAGEN EN PANTALLA COMPLETA (LIGHTBOX) -->
+  <div class="lightbox-overlay hidden" id="lightboxModal" onclick="closeLightbox()">
+    <img id="lightboxImg" src="" alt="Vista Ampliada" class="lightbox-img">
+  </div>
+
   <script>
     const rootModal = document.getElementById('rootModal');
     const categoryModal = document.getElementById('categoryModal');
     const backBtn = document.getElementById('backBtn');
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
 
-    let currentLevel = 'root'; // 'root', 'category', 'subcategory'
+    let currentLevel = 'root';
 
     function openRootFolder() {
       rootModal.classList.remove('hidden');
@@ -327,7 +334,6 @@
       currentLevel = 'root';
     }
 
-    // Muestra detalles en el panel lateral (oculta la imagen si la ruta está vacía)
     function showInspector(title, imgUrl, text) {
       document.getElementById('inspectorPlaceholder').classList.add('hidden');
       
@@ -339,9 +345,12 @@
       
       if (imgUrl && imgUrl.trim() !== '') {
         imgElement.src = imgUrl;
+        // Asignamos la función para abrir en pantalla completa al hacer clic en la foto
+        imgElement.onclick = () => openLightbox(imgUrl);
         imgElement.classList.remove('hidden');
       } else {
         imgElement.src = '';
+        imgElement.onclick = null;
         imgElement.classList.add('hidden');
       }
       
@@ -352,6 +361,18 @@
       document.getElementById('inspectorPlaceholder').classList.remove('hidden');
       document.getElementById('inspectorDetails').classList.add('hidden');
     }
+
+    /* FUNCIONES PARA VER LA FOTO EN GRANDE */
+    function openLightbox(imgUrl) {
+      lightboxImg.src = imgUrl;
+      lightboxModal.classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      lightboxModal.classList.add('hidden');
+      lightboxImg.src = '';
+    }
   </script>
 </body>
 </html>
+  
