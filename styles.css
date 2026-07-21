@@ -76,14 +76,15 @@ body {
 .folder-sub { font-size: 0.8rem; color: #E0EFFF; margin-top: 5px; }
 
 /* MODALES / VENTANAS MAC */
-.modal-overlay {
+.modal-overlay,
+.file-viewer-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,6 +99,9 @@ body {
   border-radius: 10px;
   box-shadow: 8px 8px 0px #111D4A;
   overflow: hidden;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .wide-window {
@@ -111,6 +115,7 @@ body {
   display: flex;
   align-items: center;
   position: relative;
+  flex-shrink: 0;
 }
 
 .mac-buttons { display: flex; gap: 8px; }
@@ -125,6 +130,7 @@ body {
   transform: translateX(-50%);
   font-size: 0.85rem;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .back-btn {
@@ -144,6 +150,7 @@ body {
 .mac-body-root {
   padding: 30px;
   text-align: center;
+  overflow-y: auto;
 }
 
 .explorer-instruction {
@@ -174,17 +181,19 @@ body {
 .big-folder-icon { font-size: 3rem; margin-bottom: 5px; }
 .folder-icon-item span { font-size: 0.85rem; font-weight: 700; }
 
-/* VENTANA INSPECTOR (ARCHIVOS + PANEL LATERAL) */
+/* VENTANA INSPECTOR (DESKTOP) */
 .mac-body-inspector {
   display: flex;
-  min-height: 400px;
+  height: 500px;
+  max-height: 75vh;
 }
 
 .files-area {
-  width: 60%;
+  flex: 1;
   padding: 20px;
   border-right: 2px solid #111D4A;
   background: #FAFAFA;
+  overflow-y: auto;
 }
 
 .file-grid {
@@ -194,34 +203,45 @@ body {
 }
 
 .file-item {
-  width: 90px;
+  width: 95px;
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  padding: 8px;
+  padding: 10px 5px;
   border-radius: 8px;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
 
-.file-item:hover { background: #EBF3FA; }
-.file-thumbnail { font-size: 2.2rem; margin-bottom: 5px; }
-.file-item span { font-size: 0.75rem; font-weight: 700; text-align: center; }
+.file-item:hover {
+  background: #EBF3FA;
+  transform: translateY(-2px);
+}
 
-/* PANEL LATERAL / INSPECTOR */
+.file-thumbnail { font-size: 2.2rem; margin-bottom: 5px; }
+.file-item span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  word-break: break-word;
+}
+
+/* PANEL LATERAL / INSPECTOR (DESKTOP) */
 .inspector-sidebar {
-  width: 40%;
+  width: 320px;
   padding: 20px;
   background: #FFF;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  overflow-y: auto;
+  border-left: 1px solid #111D4A;
 }
 
 .inspector-placeholder {
   text-align: center;
   color: #888;
   font-size: 0.85rem;
+  margin: auto 0;
 }
 
 .inspector-details {
@@ -232,65 +252,80 @@ body {
 
 .inspector-img {
   width: 100%;
-  max-height: 160px;
-  object-fit: cover;
+  max-height: 200px;
+  object-fit: contain;
   border-radius: 6px;
   border: 1px solid #111D4A;
-}
-
-.inspector-title { font-size: 1.1rem; color: #111D4A; }
-.inspector-text { font-size: 0.85rem; line-height: 1.5; color: #333; }
-
-.hidden { display: none !important; }
-
-/* --- MEJORAS DE ADAPTABILIDAD Y SCROLL --- */
-
-/* Permitir scroll en el área de archivos e inspector */
-.mac-body-inspector {
-  display: flex;
-  max-height: 80vh;
-  overflow: hidden;
-}
-
-.files-area {
-  flex: 1;
-  overflow-y: auto;
-  padding: 15px;
-  max-height: 75vh;
-}
-
-.inspector-sidebar {
-  width: 300px;
-  overflow-y: auto;
-  padding: 15px;
-  max-height: 75vh;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Cursor de lupa para indicar que la foto se puede ampliar */
-.inspector-img {
-  width: 100%;
-  max-height: 250px;
-  object-fit: contain;
-  border-radius: 8px;
-  margin-bottom: 15px;
   background-color: #000;
   cursor: zoom-in;
   transition: transform 0.2s ease;
 }
 
-.inspector-img:hover {
-  transform: scale(1.02);
+.inspector-img:hover { transform: scale(1.02); }
+
+.inspector-title { font-size: 1.1rem; color: #111D4A; }
+.inspector-text { font-size: 0.85rem; line-height: 1.5; color: #333; white-space: pre-line; }
+
+.hidden { display: none !important; }
+
+/* VISOR DE ARCHIVOS DEDICADO (QUICK LOOK / TEXTEDIT) */
+.file-viewer-window {
+  max-width: 550px;
+  width: 92%;
+  z-index: 200;
 }
 
-/* --- LIGHTBOX (MODAL FOTO EN GRANDE) --- */
+.close-viewer-btn {
+  margin-left: auto;
+  background: #FF5F56;
+  color: #FFF;
+  border: none;
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.file-viewer-body {
+  padding: 25px;
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
+.viewer-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 2px solid #111D4A;
+  background-color: #000;
+  margin-bottom: 18px;
+  cursor: zoom-in;
+}
+
+.viewer-title {
+  font-size: 1.3rem;
+  color: #111D4A;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.viewer-content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #222;
+  white-space: pre-line;
+}
+
+/* LIGHTBOX (FOTO AMPLIA EN PANTALLA COMPLETA) */
 .lightbox-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.92);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -299,33 +334,65 @@ body {
 }
 
 .lightbox-img {
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: 92vw;
+  max-height: 88vh;
   object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  color: #FFF;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 /* --- ADAPTACIÓN RESPONSIVE PARA MÓVILES --- */
 @media (max-width: 768px) {
+  .main-title {
+    font-size: 4.8rem;
+  }
+
   .wide-window {
     width: 95vw !important;
-    margin: 10px auto;
   }
 
   .mac-body-inspector {
     flex-direction: column;
-    max-height: 85vh;
+    height: auto;
+    max-height: 75vh;
   }
 
   .files-area {
-    max-height: 40vh;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: none;
+    width: 100%;
+    padding: 15px;
   }
 
+  /* Ocultamos la barra lateral en móvil para dar espacio a la lista limpia */
   .inspector-sidebar {
-    width: 100%;
-    max-height: 40vh;
-    border-left: none;
+    display: none !important;
+  }
+
+  .file-grid {
+    justify-content: space-around;
+    gap: 12px;
+  }
+
+  .file-item {
+    width: 85px;
+    padding: 8px 4px;
+  }
+
+  .file-thumbnail {
+    font-size: 2.5rem;
+  }
+
+  .file-item span {
+    font-size: 0.75rem;
   }
 }

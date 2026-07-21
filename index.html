@@ -91,15 +91,15 @@
           <!-- Archivos de Sobre Mí -->
           <div id="cat-about" class="category-content hidden">
             <div class="file-grid">
-              <div class="file-item" onclick="showInspector('Yo', 'img/img1.jpg', '¡Hola! Soy Juan Filgueira gracias por visitar mi portafolio, tengo 27 años y soy apasionado por aprender cosas nuevas, por la creación de arte y los grandes desafíos.')">
+              <div class="file-item" onclick="handleFileClick('Yo', 'img/img1.jpg', '¡Hola! Soy Juan Filgueira gracias por visitar mi portafolio, tengo 27 años y soy apasionado por aprender cosas nuevas, por la creación de arte y los grandes desafíos.')">
                 <div class="file-thumbnail">🖼️</div>
                 <span>yo.png</span>
               </div>
-              <div class="file-item" onclick="showInspector('Conoceme', '', 'Apasionado por la intersección entre la tecnología, el diseño interactivo y la narrativa visual. Con más de 9 años de experiencia en edición de video, motion graphics y posproducción (Premiere Pro, After Effects, DaVinci Resolve, Blender), he evolucionado de manera natural hacia la creación de soluciones digitales completas como desarrollador web y de software. Especializado en tecnologías como Python, Flet, React, Tailwind CSS, PHP y bases de datos SQL, combino una sólida capacidad de lógica funcional con un criterio estético refinado. Mi enfoque abarca desde la arquitectura de software y el soporte en infraestructura IT hasta el desarrollo de interfaces responsivas y diseño de interacción. Además de la programación y los medios digitales, canalizo mi creatividad a través de la escritura literaria y musical, la creación de dinámicas interactivas y la gestión de proyectos creativos.')">
+              <div class="file-item" onclick="handleFileClick('Conóceme', '', 'Apasionado por la intersección entre la tecnología, el diseño interactivo y la narrativa visual. Con más de 9 años de experiencia en edición de video, motion graphics y posproducción (Premiere Pro, After Effects, DaVinci Resolve, Blender), he evolucionado de manera natural hacia la creación de soluciones digitales completas como desarrollador web y de software.\n\nEspecializado en tecnologías como Python, Flet, React, Tailwind CSS, PHP y bases de datos SQL, combino una sólida capacidad de lógica funcional con un criterio estético refinado. Mi enfoque abarca desde la arquitectura de software y el soporte en infraestructura IT hasta el desarrollo de interfaces responsivas y diseño de interacción.\n\nAdemás de la programación y los medios digitales, canalizo mi creatividad a través de la escritura literaria y musical, la creación de dinámicas interactivas y la gestión de proyectos creativos.')">
                 <div class="file-thumbnail">📄</div>
                 <span>conoceme.txt</span>
               </div>
-              <div class="file-item" onclick="showInspector('Título de Programación', 'img/img4.jpg', 'Técnico en programación graduado del CEPAV.')">
+              <div class="file-item" onclick="handleFileClick('Título de Programación', 'img/img4.jpg', 'Técnico en programación graduado del CEPAV.')">
                 <div class="file-thumbnail">🖼️</div>
                 <span>titulo.png</span>
               </div>
@@ -109,23 +109,23 @@
           <!-- Archivos de Experiencia -->
           <div id="cat-experience" class="category-content hidden">
             <div class="file-grid">
-              <div class="file-item" onclick="showInspector('Globovisión', 'img/img2.jpg', 'Trabajé 1 año como camarógrafo en el canal de televisión Globovisión.')">
+              <div class="file-item" onclick="handleFileClick('Globovisión', 'img/img2.jpg', 'Trabajé 1 año como camarógrafo en el canal de televisión Globovisión.')">
                 <div class="file-thumbnail">🎬</div>
                 <span>Globovision.png</span>
               </div>
-              <div class="file-item" onclick="showInspector('Caraota Digital', 'img/img3.jpg', 'Dos años como editor postproductor en el canal de noticias digitales Caraota Digital donde estuve encargado de la edición y diseño de motion graphics de distintos programas para YouTube.')">
+              <div class="file-item" onclick="handleFileClick('Caraota Digital', 'img/img3.jpg', 'Dos años como editor postproductor en el canal de noticias digitales Caraota Digital donde estuve encargado de la edición y diseño de motion graphics de distintos programas para YouTube.')">
                 <div class="file-thumbnail">💻</div>
                 <span>CaraotaDigital.png</span>
               </div>
-              <div class="file-item" onclick="showInspector('América Digital', 'img/img6.jpg', 'Trabajé 1 año para la agencia América Digital donde era editor postproductor encargado de hacer guiones y editar contenido para las marcas que manejaba la empresa, marcas como PlaygroundMex y PlaygroundBrazil.')">
+              <div class="file-item" onclick="handleFileClick('América Digital', 'img/img6.jpg', 'Trabajé 1 año para la agencia América Digital donde era editor postproductor encargado de hacer guiones y editar contenido para las marcas que manejaba la empresa, marcas como PlaygroundMex y PlaygroundBrazil.')">
                 <div class="file-thumbnail">🎬</div>
                 <span>AmericaDigital.png</span>
               </div>
-              <div class="file-item" onclick="showInspector('Profesor Universitario', 'img/img7.jpg', 'Encargado de impartir la materia Teoría y Práctica de la Televisión en V y VI semestre de la Universidad Monteávila.')">
+              <div class="file-item" onclick="handleFileClick('Profesor Universitario', 'img/img7.jpg', 'Encargado de impartir la materia Teoría y Práctica de la Televisión en V y VI semestre de la Universidad Monteávila.')">
                 <div class="file-thumbnail">🎓</div>
                 <span>UniversidadMonteavila.png</span>
               </div>
-              <div class="file-item" onclick="showInspector('Profesor de Diseño', 'img/img8.jpg', 'Instructor de diseño gráfico en el Instituto Programa Social Aprenda.')">
+              <div class="file-item" onclick="handleFileClick('Profesor de Diseño', 'img/img8.jpg', 'Instructor de diseño gráfico en el Instituto Programa Social Aprenda.')">
                 <div class="file-thumbnail">🎨</div>
                 <span>InstitutoAprenda.png</span>
               </div>
@@ -148,19 +148,19 @@
               </div>
 
               <!-- Archivo TXT 1 -->
-              <div class="file-item" onclick="showInspector('Proyecto MDATV', '', 'Encargado del departamento de diseño y motion graphics del canal MDATV durante 8 meses.')">
+              <div class="file-item" onclick="handleFileClick('Proyecto MDATV', '', 'Encargado del departamento de diseño y motion graphics del canal MDATV durante 8 meses.')">
                 <div class="file-thumbnail">📄</div>
                 <span>MDATV.txt</span>
               </div>
 
               <!-- Archivo TXT 2 -->
-              <div class="file-item" onclick="showInspector('Proyecto RMP', '', 'Editor de videos para la cuenta de Instagram y de YouTube de la empresa Resonancia Magnética Panamá.')">
+              <div class="file-item" onclick="handleFileClick('Proyecto RMP', '', 'Editor de videos para la cuenta de Instagram y de YouTube de la empresa Resonancia Magnética Panamá.')">
                 <div class="file-thumbnail">📄</div>
                 <span>RMP.txt</span>
               </div>
 
               <!-- Archivo TXT 3 -->
-              <div class="file-item" onclick="showInspector('Proyecto Eadic', '', 'Editor postproductor encargado de corrección de color y sonido para los videos de las clases de la empresa española Eadic con sede en Colombia, estuve en este cargo durante 3 meses.')">
+              <div class="file-item" onclick="handleFileClick('Proyecto Eadic', '', 'Editor postproductor encargado de corrección de color y sonido para los videos de las clases de la empresa española Eadic con sede en Colombia, estuve en este cargo durante 3 meses.')">
                 <div class="file-thumbnail">📄</div>
                 <span>Eadic.txt</span>
               </div>
@@ -170,19 +170,19 @@
           <!-- SUBCARPETA: AppClubmanager -->
           <div id="subcat-appclubmanager" class="category-content hidden">
             <div class="file-grid">
-              <div class="file-item" onclick="showInspector('App Club Manager - Intro', 'img/AppClubmanager/img20.png', 'Aplicación para la gestión de clubes y administración de datos.')">
+              <div class="file-item" onclick="handleFileClick('App Club Manager - Intro', 'img/AppClubmanager/img20.png', 'Aplicación para la gestión de clubes y administración de datos.')">
                 <div class="file-thumbnail">🖼️</div>
                 <span>Intro_App.png</span>
               </div>
-              <div class="file-item" onclick="showInspector('App Club Manager - Home', 'img/AppClubmanager/img21.png', 'Aplicación para la gestión de clubes y administración de datos.')">
+              <div class="file-item" onclick="handleFileClick('App Club Manager - Home', 'img/AppClubmanager/img21.png', 'Aplicación para la gestión de clubes y administración de datos.')">
                 <div class="file-thumbnail">🖼️</div>
                 <span>Home_App.png</span>
               </div>
-              <div class="file-item" onclick="showInspector('App Club Manager - Panel', 'img/AppClubmanager/img25.png', 'Aplicación para la gestión de clubes y administración de datos.')">
+              <div class="file-item" onclick="handleFileClick('App Club Manager - Panel', 'img/AppClubmanager/img25.png', 'Aplicación para la gestión de clubes y administración de datos.')">
                 <div class="file-thumbnail">🖼️</div>
                 <span>Panel_App.png</span>
               </div>
-              <div class="file-item" onclick="showInspector('Detalles AppClubmanager', '', 'El diseño UI/UX fue realizado a través de Figma, luego se desarrolló completamente en Android Studio con Java y Kotlin como lenguajes principales.')">
+              <div class="file-item" onclick="handleFileClick('Detalles AppClubmanager', '', 'El diseño UI/UX fue realizado a través de Figma, luego se desarrolló completamente en Android Studio con Java y Kotlin como lenguajes principales.')">
                 <div class="file-thumbnail">📄</div>
                 <span>Detalles.txt</span>
               </div>
@@ -192,27 +192,27 @@
           <!-- SUBCARPETA: Paginadesalud -->
           <div id="subcat-paginadesalud" class="category-content hidden">
             <div class="file-grid">
-              <div class="file-item" onclick="showInspector('Página de Salud - Vista 1', 'img/Paginadesalud/img15.png', 'Plataforma web diseñada para servicios de salud, landing responsive y catálogo de servicios.')">
+              <div class="file-item" onclick="handleFileClick('Página de Salud - Vista 1', 'img/Paginadesalud/img15.png', 'Plataforma web diseñada para servicios de salud, landing responsive y catálogo de servicios.')">
                 <div class="file-thumbnail">🖼️</div>
                 <span>Preview_1.png</span>
               </div>
-              <div class="file-item" onclick="showInspector('Página de Salud - Vista 2', 'img/Paginadesalud/img16.png', 'Plataforma web diseñada para servicios de salud, landing responsive y catálogo de servicios.')">
+              <div class="file-item" onclick="handleFileClick('Página de Salud - Vista 2', 'img/Paginadesalud/img16.png', 'Plataforma web diseñada para servicios de salud, landing responsive y catálogo de servicios.')">
                 <div class="file-thumbnail">🖼️</div>
                 <span>Preview_2.png</span>
               </div>
-              <div class="file-item" onclick="showInspector('Página de Salud - Vista 3', 'img/Paginadesalud/img17.png', 'Plataforma web diseñada para servicios de salud, landing responsive y catálogo de servicios.')">
+              <div class="file-item" onclick="handleFileClick('Página de Salud - Vista 3', 'img/Paginadesalud/img17.png', 'Plataforma web diseñada para servicios de salud, landing responsive y catálogo de servicios.')">
                 <div class="file-thumbnail">🖼️</div>
                 <span>Preview_3.png</span>
               </div>
-              <div class="file-item" onclick="showInspector('Página de Salud - Vista 4', 'img/Paginadesalud/img18.png', 'Plataforma web diseñada para servicios de salud, landing responsive y catálogo de servicios.')">
+              <div class="file-item" onclick="handleFileClick('Página de Salud - Vista 4', 'img/Paginadesalud/img18.png', 'Plataforma web diseñada para servicios de salud, landing responsive y catálogo de servicios.')">
                 <div class="file-thumbnail">🖼️</div>
                 <span>Preview_4.png</span>
               </div>
-              <div class="file-item" onclick="showInspector('Página de Salud - Vista 5', 'img/img19.png', 'Plataforma web diseñada para servicios de salud, landing responsive y catálogo de servicios.')">
+              <div class="file-item" onclick="handleFileClick('Página de Salud - Vista 5', 'img/img19.png', 'Plataforma web diseñada para servicios de salud, landing responsive y catálogo de servicios.')">
                 <div class="file-thumbnail">🖼️</div>
                 <span>Preview_5.png</span>
               </div>
-              <div class="file-item" onclick="showInspector('Estructura & Diseño', '', 'Los lenguajes utilizados en este proyecto fueron HTML, CSS y Tailwind CSS.')">
+              <div class="file-item" onclick="handleFileClick('Estructura & Diseño', '', 'Los lenguajes utilizados en este proyecto fueron HTML, CSS y Tailwind CSS.')">
                 <div class="file-thumbnail">📄</div>
                 <span>Info_Salud.txt</span>
               </div>
@@ -222,7 +222,7 @@
           <!-- Archivos de Skills -->
           <div id="cat-skills" class="category-content hidden">
             <div class="file-grid">
-              <div class="file-item" onclick="showInspector('All', '', 'HTML5, CSS3, JavaScript, Python, Flet, SQL, MySQL,  React.js, Git, GitHub, Figma, Adobe Photoshop, Adobe After effects, Adobe Premiere Pro, DaVinci Resolve.')">
+              <div class="file-item" onclick="handleFileClick('Stack Técnico', '', 'HTML5, CSS3, JavaScript, Python, Flet, SQL, MySQL, React.js, Git, GitHub, Figma, Adobe Photoshop, Adobe After Effects, Adobe Premiere Pro, DaVinci Resolve.')">
                 <div class="file-thumbnail">⚡</div>
                 <span>Stack_Tecnico.txt</span>
               </div>
@@ -232,7 +232,7 @@
           <!-- Archivos de Contacto -->
           <div id="cat-contact" class="category-content hidden">
             <div class="file-grid">
-              <div class="file-item" onclick="showInspector('Contacto & Redes', '', 'Juan.andresfilgueira@gmail.com, 04142545533, @chesire.')">
+              <div class="file-item" onclick="handleFileClick('Contacto & Redes', '', 'Correo: Juan.andresfilgueira@gmail.com\nTeléfono: +58 414 254 5533\nInstagram: @chesire')">
                 <div class="file-thumbnail">📩</div>
                 <span>Contacto_Directo.txt</span>
               </div>
@@ -241,7 +241,7 @@
 
         </div>
 
-        <!-- ÁREA DERECHA: INSPECTOR / DETALLES LATERALES -->
+        <!-- ÁREA DERECHA (DESKTOP): INSPECTOR LATERAL -->
         <div class="inspector-sidebar" id="inspectorSidebar">
           <div class="inspector-placeholder" id="inspectorPlaceholder">
             <p>👈 Selecciona un archivo para inspeccionar sus detalles</p>
@@ -257,8 +257,27 @@
     </div>
   </div>
 
+  <!-- MODAL DE LECTURA DE TEXTO / ARCHIVO (OPTIMIZADO PARA MÓVILES Y DESKTOP) -->
+  <div class="file-viewer-overlay hidden" id="fileViewerModal">
+    <div class="mac-window file-viewer-window">
+      <div class="mac-header">
+        <div class="mac-buttons">
+          <span class="btn-mac close" onclick="closeFileViewer()"></span>
+        </div>
+        <div class="mac-title" id="viewerHeaderTitle">Vista Previa — TextEdit</div>
+        <button class="close-viewer-btn" onclick="closeFileViewer()">Cerrar ✕</button>
+      </div>
+      <div class="file-viewer-body">
+        <img id="viewerImg" src="" alt="Vista Previa" class="viewer-img hidden" onclick="openLightbox(this.src)">
+        <h2 id="viewerTitle" class="viewer-title"></h2>
+        <div id="viewerContent" class="viewer-content"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL DE IMAGEN EN PANTALLA COMPLETA (LIGHTBOX) -->
   <div class="lightbox-overlay hidden" id="lightboxModal" onclick="closeLightbox()">
+    <span class="lightbox-close">✕</span>
     <img id="lightboxImg" src="" alt="Vista Ampliada" class="lightbox-img">
   </div>
 
@@ -266,10 +285,21 @@
     const rootModal = document.getElementById('rootModal');
     const categoryModal = document.getElementById('categoryModal');
     const backBtn = document.getElementById('backBtn');
+    
+    const fileViewerModal = document.getElementById('fileViewerModal');
+    const viewerHeaderTitle = document.getElementById('viewerHeaderTitle');
+    const viewerTitle = document.getElementById('viewerTitle');
+    const viewerContent = document.getElementById('viewerContent');
+    const viewerImg = document.getElementById('viewerImg');
+
     const lightboxModal = document.getElementById('lightboxModal');
     const lightboxImg = document.getElementById('lightboxImg');
 
     let currentLevel = 'root';
+
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
 
     function openRootFolder() {
       rootModal.classList.remove('hidden');
@@ -334,6 +364,18 @@
       currentLevel = 'root';
     }
 
+    /* MANEJADOR INTELIGENTE DE ARCHIVOS (MÓVIL VS DESKTOP) */
+    function handleFileClick(title, imgUrl, text) {
+      if (isMobile()) {
+        // En móviles, abrimos una ventana modal dedicada y limpia
+        openFileViewer(title, imgUrl, text);
+      } else {
+        // En computadora, se mantiene la experiencia con la barra lateral
+        showInspector(title, imgUrl, text);
+      }
+    }
+
+    /* INSPECTOR LATERAL (DESKTOP) */
     function showInspector(title, imgUrl, text) {
       document.getElementById('inspectorPlaceholder').classList.add('hidden');
       
@@ -345,7 +387,6 @@
       
       if (imgUrl && imgUrl.trim() !== '') {
         imgElement.src = imgUrl;
-        // Asignamos la función para abrir en pantalla completa al hacer clic en la foto
         imgElement.onclick = () => openLightbox(imgUrl);
         imgElement.classList.remove('hidden');
       } else {
@@ -362,7 +403,29 @@
       document.getElementById('inspectorDetails').classList.add('hidden');
     }
 
-    /* FUNCIONES PARA VER LA FOTO EN GRANDE */
+    /* VISOR DE ARCHIVOS DEDICADO (TEXTEDIT / QUICK LOOK) */
+    function openFileViewer(title, imgUrl, text) {
+      viewerTitle.innerText = title;
+      viewerContent.innerText = text;
+
+      if (imgUrl && imgUrl.trim() !== '') {
+        viewerImg.src = imgUrl;
+        viewerImg.classList.remove('hidden');
+        viewerHeaderTitle.innerText = 'Vista Previa — Vista Rápida';
+      } else {
+        viewerImg.src = '';
+        viewerImg.classList.add('hidden');
+        viewerHeaderTitle.innerText = 'Vista Previa — TextEdit';
+      }
+
+      fileViewerModal.classList.remove('hidden');
+    }
+
+    function closeFileViewer() {
+      fileViewerModal.classList.add('hidden');
+    }
+
+    /* LIGHTBOX (AMPLIAR FOTO PANTALLA COMPLETA) */
     function openLightbox(imgUrl) {
       lightboxImg.src = imgUrl;
       lightboxModal.classList.remove('hidden');
@@ -375,4 +438,3 @@
   </script>
 </body>
 </html>
-  
